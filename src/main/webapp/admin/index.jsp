@@ -12,6 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0"/>    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3"/>
 	<meta http-equiv="description" content="This is my page"/>
+	  <link rel='shortcut icon' href='/erwp/images/title.png' type="image/x-icon"/>
+	  <title>校园二手物品交易网站</title>
   </head>
   
 	  <frameset rows="*" cols="235,*" framespacing="0" frameborder="no" border="0">
