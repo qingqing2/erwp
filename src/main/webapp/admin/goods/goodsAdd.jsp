@@ -22,8 +22,10 @@ String path = request.getContextPath();
         <script type='text/javascript' src='<%=path %>/dwr/engine.js'></script>
         <script type='text/javascript' src='<%=path %>/dwr/util.js'></script>
         <script type="text/javascript" src="<%=path %>/js/popup_shuaxin_no.js"></script>
-        
-        <script language="javascript">
+		<script type='text/javascript' src='<%=path %>/js/jquery-1.3.2.min.js'></script>
+
+
+		<script language="javascript">
             function init()
 	        {
 	           loginService.leibieSelect(callBack);
@@ -62,7 +64,7 @@ String path = request.getContextPath();
 	</head>
 
 	<body onload="init()" leftmargin="2" topmargin="9" background='<%=path %>/images/allbg.gif'>
-			<form action="<%=path %>/goodsAdd.action" name="formAdd" method="post" enctype="multipart/form-data">
+			<form action="<%=path %>/goodsAdd" name="formAdd" method="post" enctype="multipart/form-data">
 				     <table width="98%" align="center" border="0" cellpadding="4" cellspacing="1" bgcolor="#CBD8AC" style="margin-bottom:8px">
 						<tr bgcolor="#EEF4EA">
 					        <td colspan="3" background="<%=path %>/images/wbg.gif" class='title'><span>&nbsp;</span></td>
@@ -89,8 +91,7 @@ String path = request.getContextPath();
 						        物品介绍：
 						    </td>
 						    <td width="75%" bgcolor="#FFFFFF" align="left">
-						        <FCK:editor instanceName="jieshao"  basePath="/fckeditor" width="600" height="160" value="" toolbarSet="Basic">
-                                </FCK:editor>
+						        <textarea rows="1" name="jieshao" style="width: 200px;"></textarea>
 						    </td>
 						</tr>
 						<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
@@ -121,5 +122,25 @@ String path = request.getContextPath();
 						</tr>
 					 </table>
 			</form>
+	<script language="JavaScript">
+		$.ajax({
+			type: 'POST',
+			url: "/erwp" + "/leibieSelect",
+			dataType: "json",
+			success:function (data) {
+				$.each(data,function(index,item){
+					var myOption=document.createElement("option")
+					myOption.setAttribute("value",item.id);
+					myOption.appendChild(document.createTextNode(item.mingcheng));
+					$("#leibieId").append(myOption);
+				})
+			},
+			error:function(e){
+				console.log(e);
+			},
+		})
+
+	</script>
    </body>
 </html>
+

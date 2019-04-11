@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.LoginService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 
@@ -15,11 +18,22 @@ public class LoginController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public String login(Admin user) {
+    public String login(Admin user, HttpServletRequest request) {
         Admin user1 = loginService.findUser(user);
+        HttpSession session = request.getSession();
         if (null == user1) {
             return "no";
         }
+        session.setAttribute("admin", user1);
         return "yes";
     }
+
+    @RequestMapping("/updateUser")
+    @ResponseBody
+    public String update(Admin user) {
+        loginService.updateUser(user);
+        return "1";
+    }
+
+
 }

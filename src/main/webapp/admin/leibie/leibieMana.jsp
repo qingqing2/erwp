@@ -1,5 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%--<%@ taglib prefix="s" uri="/struts-tags"%>--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="s" %>
+
 <%
 String path = request.getContextPath();
 %>
@@ -42,19 +44,19 @@ String path = request.getContextPath();
 					<td width="40%">类别名称</td>
 					<td width="15%">操作</td>
 		        </tr>	
-				<s:iterator value="#request.leibieList" id="leibie" status="sta">
+				<s:forEach items="${leibieList}" var="leibie" varStatus="status">
 				<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#sta.index+1"/>
+							${status.index + 1}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#leibie.mingcheng"/>
+						${leibie.mingcheng}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-						<input type="button" value="删除" onclick="leibieDel(<s:property value="#leibie.id"/>)"/>
+						<input type="button" value="删除" onclick="leibieDel('${leibie.id}')"/>
 					</td>
 				</tr>
-				</s:iterator>
+				</s:forEach>
 			</table>
 			<br/>
 			<input type="button" value="添加信息类别" style="width: 120px;" onclick="leibieAdd()" />

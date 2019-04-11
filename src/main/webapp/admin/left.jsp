@@ -47,13 +47,13 @@ String path = request.getContextPath();
 		           </li>
 			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">物品类别管理</a>
 			          <ul>
-			            <li><a href="<%=path %>/leibieMana.action"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">物品类别管理</a></li>
+			            <li><a href="<%=path %>/leibieMana"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">物品类别管理</a></li>
 			            <li><a href="<%=path %>/admin/leibie/leibieAdd.jsp" target="rightFrame" style="font-family: 微软雅黑;font-size: 13px;">添加物品类别</a></li>
 			          </ul>
 			       </li>
 			       <li><a href="#" class="nav-top-item" style="font-family: 微软雅黑;font-size: 15px;">物品信息管理</a>
 			          <ul>
-			            <li><a href="<%=path %>/goodsMana.action"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">物品信息管理</a></li>
+			            <li><a href="<%=path %>/goodsMana"  target="rightFrame"style="font-family: 微软雅黑;font-size: 13px;">物品信息管理</a></li>
 			            <li><a href="<%=path %>/admin/goods/goodsAdd.jsp" target="rightFrame" style="font-family: 微软雅黑;font-size: 13px;">添加物品信息</a></li>
 			          </ul>
 			       </li>

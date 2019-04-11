@@ -24,4 +24,11 @@ public class LoginServiceImpl implements LoginService {
         }
         return admins.get(0);
     }
+
+    @Override
+    public void updateUser(Admin user) {
+        AdminExample example = new AdminExample();
+        example.createCriteria().andUsernameEqualTo(user.getUsername());
+        adminMapper.updateByExampleSelective(user, example);
+    }
 }

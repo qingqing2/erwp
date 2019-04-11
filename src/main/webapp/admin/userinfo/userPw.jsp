@@ -17,14 +17,15 @@ String path = request.getContextPath();
         
         <link rel="stylesheet" type="text/css" href="<%=path %>/css/base.css" />
 		
-		<script type='text/javascript' src='<%=path %>/dwr/interface/loginService.js'></script>
-        <script type='text/javascript' src='<%=path %>/dwr/engine.js'></script>
-        <script type='text/javascript' src='<%=path %>/dwr/util.js'></script>
+		<%--<script type='text/javascript' src='<%=path %>/dwr/interface/loginService.js'></script>--%>
+        <%--<script type='text/javascript' src='<%=path %>/dwr/engine.js'></script>--%>
+        <%--<script type='text/javascript' src='<%=path %>/dwr/util.js'></script>--%>
+        <script type='text/javascript' src='<%=path %>/js/jquery-1.3.2.min.js'></script>
 		
         <script language="javascript">
             function check()
             {
-                 var userPwReal="${sessionScope.admin.userPw}";
+                 var userPwReal="${sessionScope.admin.userpw}";
                  if(document.formPw.userPw.value !=userPwReal)
                  {
                      alert("原密码不正确");
@@ -38,7 +39,18 @@ String path = request.getContextPath();
                  }
                  
                  document.getElementById("indicator").style.display="block";
-                 loginService.adminPwEdit(document.formPw.userPw1.value,callback);
+                $.ajax({
+                    type: 'POST',
+                    url: "/erwp" + "/updateUser",
+                    dataType: "text",
+                    data: {"username":"${sessionScope.admin.username}","userpw":document.formPw.userPw1.value},
+                    success:function (data) {
+                        callback(data);
+                    },
+                    error:function(e){
+                        console.log(e);
+                    },
+                })
             }
             function callback(data)
             {
@@ -59,7 +71,7 @@ String path = request.getContextPath();
 				         登录名：
 				    </td>
 				    <td width="75%" bgcolor="#FFFFFF">
-				        <input type="text" value="${sessionScope.admin.userName }" name="userName" size="20" disabled="disabled"/>
+				        <input type="text" value="${sessionScope.admin.username }" name="userName" size="20" disabled="disabled"/>
 				    </td>
 				</tr>
 				<tr bgcolor="#FFFFFF">
@@ -86,7 +98,7 @@ String path = request.getContextPath();
 			             <input type="button" value="修改" onclick="check()"/>
 			             &nbsp;&nbsp;&nbsp;
 			             <input type="reset" value="重置"/>
-			             <img id="indicator" src="<%=path %>/img/loading.gif" alt="Loading..." style="display:none"/>
+			             <img id="indicator" src="<%=path %>/images/loading.gif" alt="Loading..." style="display:none"/>
 			        </td>
 				</tr>
 			</table>
