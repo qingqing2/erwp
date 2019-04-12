@@ -13,4 +13,6 @@ public interface GoodsService {
     void updateByKey(Integer id);
 
     void upload(MultipartFile file, String uploadPath);
+
+    void addGoods(Goods goods);
 }

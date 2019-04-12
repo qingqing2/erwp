@@ -94,4 +94,24 @@ public class Mingxi {
 	public void setGoodsshuliang(Integer goodsshuliang) {
 		this.goodsshuliang = goodsshuliang;
 	}
+
+
+	private String mingcheng;
+	private Integer tejia;
+
+	public String getMingcheng() {
+		return mingcheng;
+	}
+
+	public void setMingcheng(String mingcheng) {
+		this.mingcheng = mingcheng;
+	}
+
+	public Integer getTejia() {
+		return tejia;
+	}
+
+	public void setTejia(Integer tejia) {
+		this.tejia = tejia;
+	}
 }

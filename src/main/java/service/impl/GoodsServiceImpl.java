@@ -42,7 +42,7 @@ public class GoodsServiceImpl implements GoodsService {
         try {
 
             inputStream = file.getInputStream();
-            fos = new FileOutputStream(uploadPath);
+            fos = new FileOutputStream(uploadPath + "\\" + file.getOriginalFilename());
             byte[] bytes = new byte[10];
             int byteread = 0;
             while ((byteread = inputStream.read(bytes)) != -1) {
@@ -65,5 +65,10 @@ public class GoodsServiceImpl implements GoodsService {
             }
         }
 
+    }
+
+    @Override
+    public void addGoods(Goods goods) {
+        goodsMapper.insertSelective(goods);
     }
 }

@@ -74,7 +74,7 @@ String path = request.getContextPath();
 						         类别选择：
 						    </td>
 						    <td width="75%" bgcolor="#FFFFFF" align="left">
-						        <select name="leibieId" id="leibieId" style="width: 200px;">
+						        <select name="leibieid" id="leibieId" style="width: 200px;">
 								</select>
 						    </td>
 						</tr>
@@ -99,7 +99,7 @@ String path = request.getContextPath();
 						        上传图片：
 						    </td>
 						    <td width="75%" bgcolor="#FFFFFF" align="left">
-						        <input type="text" name="fujian" id="fujian" style="width: 200px;" readonly="readonly"/>
+						        <input type="text" name="fujian" id="fujian1" style="width: 200px;" readonly="readonly"/>
 						        <input type="button" value="上传" onclick="up()"/>
 						        <input type="hidden" name="fujianYuanshiming" id="fujianYuanshiming"/>
 						    </td>

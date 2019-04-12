@@ -72,4 +72,6 @@ public interface LiuyuanMapper {
 	 * @mbg.generated  Wed Apr 10 15:57:18 CST 2019
 	 */
 	int updateByPrimaryKey(Liuyuan record);
+
+	void deleteByKey(Integer id);
 }

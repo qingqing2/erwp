@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%--<%@ taglib prefix="s" uri="/struts-tags"%>--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="s" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -167,15 +168,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <td class="blackTitle" align="center">购买数量</td>
               <td class="blackTitle" align="center">购买价格</td>
           </tr>
-		  <s:iterator value="#request.mingxiList" id="mingxi">
+		  <s:forEach items="${mingxiList}" var="mingxi" varStatus="status">
 		  <tr class="text" align="center" bgcolor="#FFFFFF">
 			  <td>
-				<s:property value="#mingxi.goods.mingcheng"/>
+				  ${mingxi.mingcheng}
 			  </td>
-			  <td><s:property value="#mingxi.goodsShuliang"/></td>
-			  <td><s:property value="#mingxi.goods.tejia"/></td>
+			  <td>${mingxi.goodsshuliang}</td>
+			  <td>${mingxi.tejia}</td>
 		  </tr>
-		  </s:iterator>
+		  </s:forEach>
   	</table>
   </body>
 </html>

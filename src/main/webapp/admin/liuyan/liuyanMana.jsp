@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%--<%@ taglib prefix="s" uri="/struts-tags"%>--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="s" %>
 <%
 String path = request.getContextPath();
 %>
@@ -20,7 +21,7 @@ String path = request.getContextPath();
            {
                if(confirm('您确定删除吗？'))
                {
-                   window.location.href="<%=path %>/liuyanDel.action?id="+id;
+                   window.location.href="<%=path %>/liuyanDel?id="+id;
                }
            }
        </script>
@@ -42,35 +43,35 @@ String path = request.getContextPath();
 					<td width="10%">提交时间</td>
 					<td width="10%">操作</td>
 		        </tr>	
-				<s:iterator value="#request.liuyanList" id="liuyan" status="ss">
+				<s:forEach items="${liuyanList}" var="liuyan" varStatus="status">
 				<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#ss.index+1"/>
+							${status.index + 1}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#liuyan.xingming"/>
+						${liuyan.xingming}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#liuyan.zuzhi"/>
+							${liuyan.zuzhi}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#liuyan.dianhua"/>
+							${liuyan.dianhua}
 					</td>
 					
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#liuyan.youxiang"/>
+							${liuyan.youxiang}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#liuyan.neirong"/>
+							${liuyan.neirong}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#liuyan.shijian"/>
+							${liuyan.shijian}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-						<input type="button" value="删除" onclick="liuyanDel(<s:property value="#liuyan.id"/>)"/>
+						<input type="button" value="删除" onclick="liuyanDel('${liuyan.id}')"/>
 					</td>
 				</tr>
-				</s:iterator>
+				</s:forEach>
 			</table>
 	</body>
 </html>

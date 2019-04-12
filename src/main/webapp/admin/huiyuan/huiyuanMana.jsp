@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%--<%@ taglib prefix="s" uri="/struts-tags"%>--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="s" %>
 <%
 String path = request.getContextPath();
 %>
@@ -20,7 +21,7 @@ String path = request.getContextPath();
            {
                if(confirm('您确定删除吗？'))
                {
-                   window.location.href="<%=path %>/huiyuanDel.action?id="+id;
+                   window.location.href="<%=path %>/huiyuanDel?id="+id;
                }
            }
        </script>
@@ -44,39 +45,38 @@ String path = request.getContextPath();
 					
 					<td width="10%">操作</td>
 		        </tr>	
-				<s:iterator value="#request.huiyuanList" id="huiyuan" status="ss">
+				<s:forEach items="${huiyuanList}" var="huiyuan" varStatus="status">
 				<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#ss.index+1"/>
+							${status.index + 1}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#huiyuan.loginname"/>
+						${huiyuan.loginname}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-					    <s:property value="#huiyuan.loginpw"/>
-					</td>
-					
-					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#huiyuan.xingming"/>
-					</td>
-					<td bgcolor="#FFFFFF" align="center">
-					    <s:property value="#huiyuan.xingbie"/>
-					</td>
-					<td bgcolor="#FFFFFF" align="center">
-					    <s:property value="#huiyuan.nianling"/>
-					</td>
-					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#huiyuan.address"/>
-					</td>
-					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#huiyuan.dianhua"/>
+							${huiyuan.loginpw}
 					</td>
 					
 					<td bgcolor="#FFFFFF" align="center">
-						<input type="button" value="删除" onclick="huiyuanDel(<s:property value="#huiyuan.id"/>)"/>
+							${huiyuan.xingming}
+					</td>
+					<td bgcolor="#FFFFFF" align="center">
+							${huiyuan.xingbie}
+					</td>
+					<td bgcolor="#FFFFFF" align="center">
+							${huiyuan.nianling}
+					</td>
+					<td bgcolor="#FFFFFF" align="center">
+							${huiyuan.address}
+					</td>
+					<td bgcolor="#FFFFFF" align="center">
+							${huiyuan.dianhua}
+					</td>
+					<td bgcolor="#FFFFFF" align="center">
+						<input type="button" value="删除" onclick="huiyuanDel('${huiyuan.id}')"/>
 					</td>
 				</tr>
-				</s:iterator>
+				</s:forEach>
 			</table>
 	</body>
 </html>

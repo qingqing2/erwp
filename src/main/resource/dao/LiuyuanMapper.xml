@@ -315,4 +315,8 @@
       shijian = #{shijian,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <delete id="deleteByKey" parameterType="java.lang.Integer">
+    delete from t_liuyan where id = #{id,jdbcType=INTEGER}
+  </delete>
 </mapper>

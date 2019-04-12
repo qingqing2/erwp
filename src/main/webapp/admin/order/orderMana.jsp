@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%--<%@ taglib prefix="s" uri="/struts-tags"%>--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="s" %>
 <%
 String path = request.getContextPath();
 %>
@@ -18,15 +19,15 @@ String path = request.getContextPath();
         <script language="javascript">
            function orderDetail(id)
            {
-              var url="<%=path %>/orderDetail.action?orderId="+id;
-              var ret = window.showModalDialog(url,"","dialogWidth:800px; dialogHeight:300px; dialogLeft: status:no; directories:yes;scrollbars:yes;Resizable=no;");
+              var url="<%=path %>/orderDetail?id="+id;
+              var ret = window.open(url,"","dialogWidth:800px; dialogHeight:300px; dialogLeft: status:no; directories:yes;scrollbars:yes;Resizable=no;");
            }
         
            function orderShouli(id)
            {
                if(confirm('您确定受理订单吗？'))
                {
-                   window.location.href="<%=path %>/orderShouli.action?id="+id;
+                   window.location.href="<%=path %>/orderShouli?id="+id;
                }
            }
            
@@ -49,36 +50,42 @@ String path = request.getContextPath();
 					<td width="10%">订单价格</td>
 					<td width="15%">操作</td>
 		        </tr>	
-				<s:iterator value="#request.orderList" id="order" status="ss">
+				<s:forEach items="${orderList}" var="order" varStatus="status">
 				<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#ss.index+1"/>
+							${status.index + 1}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-						<s:property value="#order.bianhao"/>
+						${order.bianhao}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-					   <s:property value="#order.xiadanshi"/>
+							${order.xiadanshi}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-					   <s:property value="#order.zt"/>
+							${order.zt}
 					</td>
 					
 					<td bgcolor="#FFFFFF" align="center">
-					   <s:property value="#order.songhuodizhi"/>
+							${order.songhuodizhi}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-					   <s:property value="#order.fukuanfangshi"/>
+							${order.fukuanfangshi}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-					   <s:property value="#order.zongjia"/>
+							${order.zongjia}
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-					    <a href="#" onclick="orderDetail(<s:property value="#order.id"/>)" class="pn-loperator">订单明细</a>
-						<a href="#" onclick="orderShouli(<s:property value="#order.id"/>)" class="pn-loperator">受理订单</a>
+						<s:if test="${order.zt == '已受理'}">
+							<a href="#" onclick="orderDetail('${order.id}')" class="pn-loperator">订单明细</a>
+						</s:if>
+
+						<s:if test="${order.zt == '待受理'}">
+							<a href="#" onclick="orderDetail('${order.id}')" class="pn-loperator">订单明细</a>
+							<a href="#" onclick="orderShouli('${order.id}')" class="pn-loperator">受理订单</a>
+						</s:if>
 					</td>
 				</tr>
-				</s:iterator>
+				</s:forEach>
 			</table>
 	</body>
 </html>
