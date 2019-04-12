@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%--<%@ taglib prefix="s" uri="/struts-tags"%>--%>
 <%@ page isELIgnored="false" %> 
 <%
 String path = request.getContextPath();
@@ -53,9 +53,9 @@ String path = request.getContextPath();
 							                    <TR>
 							                      <TD bgColor=#ffffff  align=left>
 							                        <P align="center">
-							                           <A href="<%=path %>/goodsDetailQian.action?id=${goods.id }"><IMG border=0 align=absMiddle src="<%=path %>/${goods.fujian }" width=150 height=140></A>
+							                           <A href="<%=path %>/site/goodsDetailQian?id=${goods.id }"><IMG border=0 align=absMiddle src="<%=path %>/${goods.fujian }" width=150 height=140></A>
 							                           </>
-							                           <center><A href="<%=path %>/goodsDetailQian.action?id=${goods.id }"><FONT color=#ff0000></FONT>${goods.mingcheng }</A></center>
+							                           <center><A href="<%=path %>/site/goodsDetailQian?id=${goods.id }"><FONT color=#ff0000></FONT>${goods.mingcheng }</A></center>
 							                        </P>
 							                      </TD>
 							                    </TR>

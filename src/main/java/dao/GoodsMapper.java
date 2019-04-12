@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 import model.Goods;
 import model.GoodsExample;
+import model.Page;
 import org.apache.ibatis.annotations.Param;
 
 public interface GoodsMapper {
@@ -72,4 +73,8 @@ public interface GoodsMapper {
 	 * @mbg.generated  Wed Apr 10 15:57:18 CST 2019
 	 */
 	int updateByPrimaryKey(Goods record);
+
+	List<Goods> findByMingcheng(int index, String mingcheng);
+
+	Integer countByMingcheng(String mingcheng);
 }

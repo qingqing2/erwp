@@ -345,4 +345,21 @@
       del = #{del,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findByMingcheng"  resultType="model.Goods">
+    select
+    <include refid="Base_Column_List" />
+    from t_goods
+    where mingcheng like CONCAT('%',#{param2},'%') and del = 'no'
+    limit #{param1},20
+
+
+
+  </select>
+
+  <select id="countByMingcheng" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select count(*)
+    from t_goods
+    where mingcheng like CONCAT('%',#{mingcheng},'%') and del = 'no'
+  </select>
 </mapper>

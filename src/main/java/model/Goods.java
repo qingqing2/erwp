@@ -209,4 +209,23 @@ public class Goods {
 	public void setDel(String del) {
 		this.del = del;
 	}
+
+	private int index;
+	private int totalPage;
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public int getTotalPage() {
+		return totalPage;
+	}
+
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
 }

@@ -48,9 +48,9 @@ String path = request.getContextPath();
 							                    <TR>
 							                      <TD bgColor=#ffffff  align=left>
 							                        <P align="center">
-							                           <A href="<%=path %>/goodsDetailQian.action?id=${goods.id }"><IMG border=0 align=absMiddle src="<%=path %>/${goods.fujian }" width=150 height=140></A>
+							                           <A href="<%=path %>/site/goodsDetailQian?id=${goods.id }"><IMG border=0 align=absMiddle src="<%=path %>/${goods.fujian }" width=150 height=140></A>
 							                           </>
-							                           <center><A href="<%=path %>/goodsDetailQian.action?id=${goods.id }"><FONT color=#ff0000></FONT>${goods.mingcheng }</A></center>
+							                           <center><A href="<%=path %>/site/goodsDetailQian?id=${goods.id }"><FONT color=#ff0000></FONT>${goods.mingcheng }</A></center>
 							                        </P>
 							                      </TD>
 							                    </TR>

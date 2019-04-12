@@ -2,6 +2,7 @@ package service;
 
 
 import model.Goods;
+import model.Page;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -15,4 +16,7 @@ public interface GoodsService {
     void upload(MultipartFile file, String uploadPath);
 
     void addGoods(Goods goods);
+
+    Page<List<Goods>> findByMingcheng(int index, String mingcheng);
+    Goods selectByKey(Integer id);
 }

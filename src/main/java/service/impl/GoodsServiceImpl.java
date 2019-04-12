@@ -3,6 +3,7 @@ package service.impl;
 import dao.GoodsMapper;
 import model.Goods;
 import model.GoodsExample;
+import model.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -70,5 +71,28 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public void addGoods(Goods goods) {
         goodsMapper.insertSelective(goods);
+    }
+
+    @Override
+    public Page<List<Goods>> findByMingcheng(int index, String mingcheng) {
+        Integer count = goodsMapper.countByMingcheng(mingcheng);
+        if (count%20 != 0) {
+            count = count/20 + 1;
+        } else {
+            count = count/20;
+        }
+        Page<List<Goods>> page = new Page<>();
+        page.setTotlePage(count);
+        page.setIndex(index);
+        List<Goods> byMingcheng = goodsMapper.findByMingcheng(index*20, mingcheng);
+        page.setData(byMingcheng);
+        return page;
+
+    }
+
+    @Override
+    public Goods selectByKey(Integer id) {
+        Goods goods = goodsMapper.selectByPrimaryKey(id);
+        return goods;
     }
 }

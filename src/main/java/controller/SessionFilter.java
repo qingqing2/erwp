@@ -24,7 +24,8 @@ public class SessionFilter implements Filter {
             if (uri.indexOf("login") != -1 || uri.indexOf("Login") != -1) {
                 chain.doFilter(req, res);
             } else if ((uri.contains(".css") || uri.contains(".js") || uri.contains(".jpg") || uri.contains(".png")
-                    || uri.contains(".jpng")) && !uri.contains(".jsp")){
+                    || uri.contains(".jpng") || uri.contains("site/")) && (!uri.contains(".jsp") || uri.contains("site/"))){
+                req.getSession().setAttribute("userType", 0);
                 chain.doFilter(req, res);
             } else {
                 HttpSession session = req.getSession();

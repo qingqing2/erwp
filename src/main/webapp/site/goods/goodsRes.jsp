@@ -39,7 +39,7 @@ String path = request.getContextPath();
 					          <div>
 							       <TABLE class=main border=0 cellSpacing=2 cellPadding=2>
 					                  <TR>
-						                  <c:forEach items="${requestScope.page.data}" var="goods" varStatus="sta">
+						                  <c:forEach items="${page.data}" var="goods" varStatus="sta">
 						                    <c:if test="${sta.index%4==0}">
 						                       </tr><tr>
 						                    </c:if>
@@ -48,9 +48,9 @@ String path = request.getContextPath();
 							                    <TR>
 							                      <TD bgColor=#ffffff  align=left>
 							                        <P align="center">
-							                           <A href="<%=path %>/goodsDetailQian.action?id=${goods.id }"><IMG border=0 align=absMiddle src="<%=path %>/${goods.fujian }" width=150 height=140></A>
+							                           <A href="<%=path %>/site/goodsDetailQian?id=${goods.id }"><IMG border=0 align=absMiddle src="<%=path %>/${goods.fujian }" width=150 height=140></A>
 							                           </>
-							                           <center><A href="<%=path %>/goodsDetailQian.action?id=${goods.id }"><FONT color=#ff0000></FONT>${goods.mingcheng }</A></center>
+							                           <center><A href="<%=path %>/site/goodsDetailQian?id=${goods.id }"><FONT color=#ff0000></FONT>${goods.mingcheng }</A></center>
 							                        </P>
 							                      </TD>
 							                    </TR>
@@ -61,19 +61,21 @@ String path = request.getContextPath();
 					               </TABLE>
 					               <div align="center">
 					               <c:choose>
-					               		<c:when test="${page.index == 1 }">首页&nbsp;&nbsp;&nbsp;上一页</c:when>
+					               		<c:when test="${page.index == 0 }">首页&nbsp;&nbsp;&nbsp;上一页</c:when>
 					               		<c:otherwise>
-					               			<a href="<%=path %>/goodsRes.action?mingcheng=${mingcheng }&index=1">首页</a>
+					               			<a href="<%=path %>/site/goodsRes?mingcheng=${mingcheng }&index=0">首页</a>
 							            	&nbsp;&nbsp;&nbsp;
-							            	<a href="<%=path %>/goodsRes.action?mingcheng=${mingcheng }&index=${page.index - 1 }"/>上一页</a>
+							            	<a href="<%=path %>/site/goodsRes?mingcheng=${mingcheng }&index=${page.index - 1 }"/>上一页</a>
+
+
 					               		</c:otherwise>
 					               </c:choose>
 					               
 					               <c:choose>
-					               		<c:when test="${page.index != page.totlePage}">
-					               			<a href="<%=path %>/goodsRes.action?mingcheng=${mingcheng }&index=${page.index + 1 }"/>下一页</a>
+					               		<c:when test="${page.index != (page.totlePage-1)}">
+					               			<a href="<%=path %>/site/goodsRes?mingcheng=${mingcheng }&index=${page.index + 1 }"/>下一页</a>
 							            	&nbsp;&nbsp;&nbsp;
-							            	<a href="<%=path %>/goodsRes.action?mingcheng=${mingcheng }&index=${page.totlePage }"/>尾页</a>
+							            	<a href="<%=path %>/site/goodsRes?mingcheng=${mingcheng }&index=${page.totlePage }"/>尾页</a>
 					               		</c:when>
 					               		<c:otherwise>
 					               			下一页&nbsp;&nbsp;&nbsp;尾页
